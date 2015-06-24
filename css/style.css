@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a, a:hover {
+	text-decoration:none;
+}
+body.black-bg {
+	background-color: #000;
+	color: #FFF; 
+}
+body.write-bg {
+	background-color: #FFF;
+	color: #000; 
+}
+body.grey-bg {
+	background-color: #CCC;
+	color: #000; 
+}
+.container {
+	width: 60%;
+	margin: 0 auto;
+	padding: 30px;
+}
+.section {
+	width: 100%;
+	font-size: 25px;
+	height: 60px;
+	margin: 20px 0;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.4);
+	border-radius: 5px;
+}
+
+.section:hover {
+	font-size: 25px;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 5px;
+}
+
+.section span{
+	color: #1aba9c;
+} 
