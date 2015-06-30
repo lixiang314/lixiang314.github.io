@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>avalonjs demo</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="framework-js/avalon.min.js"></script>
+  <script type="text/javascript" src="framework-js/jquery.min.js"></script>
+
+</head>
+<body class="grey-bg">
+
+
+	<div class="container" ng-app="" ng-init="num='0'">
+		<p><a  href="index.html"><button class="btn btn-success ">返回首页</button></a></p>
+		<p>avalonjs demo</p>
+
+
+   <div ms-controller="box">
+    <div style=" background: #a9ea00;" ms-css-width="w" ms-css-height="h"  ms-click="click"></div>
+    <p>{{ w }} x {{ h }}</p>
+    <p>W: <input type="text" ms-duplex="w" data-duplex-event="change"/></p>
+    <p>H: <input type="text" ms-duplex="h" /></p>
+  </div>
+
+
+
+  <div ms-controller="update">
+   <div>{{aaa}}</div>
+   <div>{{bbb}}</div>
+   <div>{{ccc}}</div>
+   <div>{{time | date("yyyy - MM - dd mm:ss")}}</div>
+   <ul ms-each="simpleArray">
+     <li>{{el}}</li>
+   </ul>
+   <div>  <select ms-each="objectArray">
+     <option ms-value="el.value">{{el.name}}</option>
+   </select>
+ </div>
+ <ol ms-with="object">
+   <li>{{$key}}                {{$val}}</li>
+ </ol>
+</div>
+
+
+</div>
+
+
+<script>
+var vm = avalon.define({
+ $id: "box",
+ w: 100,
+ h: 100,
+
+ click: function() {
+  vm.w = parseFloat(vm.w) + 10;
+  vm.h = parseFloat(vm.h) + 10;
+}
+});
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
