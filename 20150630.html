@@ -13,6 +13,7 @@
 
 
 	<div class="container" ng-app="" ng-init="num='0'">
+
 		<p><a  href="index.html"><button class="btn btn-success ">返回首页</button></a></p>
 		<p>avalonjs demo</p>
 
@@ -22,27 +23,24 @@
     <p>{{ w }} x {{ h }}</p>
     <p>W: <input type="text" ms-duplex="w" data-duplex-event="change"/></p>
     <p>H: <input type="text" ms-duplex="h" /></p>
+
   </div>
 
 
+   <div ms-controller="box2">
+    <div style=" background: #a900ea;" ms-css-width="a" ms-css-height="b"  ms-click="click"></div>
+    <p>{{ a }} x {{ b }}</p>
+    <p>W: <input type="text" ms-duplex="a" data-duplex-event="change"/></p>
+    <p>H: <input type="text" ms-duplex="b" /></p>   
+  </div>
 
-  <div ms-controller="update">
-   <div>{{aaa}}</div>
-   <div>{{bbb}}</div>
-   <div>{{ccc}}</div>
-   <div>{{time | date("yyyy - MM - dd mm:ss")}}</div>
-   <ul ms-each="simpleArray">
-     <li>{{el}}</li>
-   </ul>
-   <div>  <select ms-each="objectArray">
-     <option ms-value="el.value">{{el.name}}</option>
-   </select>
- </div>
- <ol ms-with="object">
-   <li>{{$key}}                {{$val}}</li>
- </ol>
-</div>
+ <p>人民币<input type="text"></p>
+ <p><input type="text"></p>
+ <p><input type="text"></p>
 
+
+
+  
 
 </div>
 
@@ -52,6 +50,17 @@ var vm = avalon.define({
  $id: "box",
  w: 100,
  h: 100,
+
+ click: function() {
+  vm.w = parseFloat(vm.w) + 10;
+  vm.h = parseFloat(vm.h) + 10;
+}
+});
+
+var vm2 = avalon.define({
+ $id: "box2",
+ a: 100,
+ b: 100,
 
  click: function() {
   vm.w = parseFloat(vm.w) + 10;
