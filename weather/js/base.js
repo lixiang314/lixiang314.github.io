@@ -1,11 +1,4 @@
-var TS_GLOBAL = {
-	downloadPage : "http://a.app.qq.com/o/simple.jsp?pkgname=best.sometimes",
-	beian : "©2015 sometimes.best 杭州挑食信息技术有限公司浙ICP备15002492号-1",
-	AVATAR: "?imageMogr2/auto-orient/strip/thumbnail/!200x200r/gravity/Center/crop/200x200",
-	THUMBNAILS : "?imageMogr2/auto-orient/strip/thumbnail/500x500>/gravity/Center/crop/450x330",
-	THUMBNAILS_WIFI : "?imageMogr2/auto-orient/strip/thumbnail/!675x495r/gravity/Center/crop/675x495",
-	baseUrl : "http://wap.thenwhat.cn/",
-};
+
 var msgHtml = [];
 msgHtml.push("<div id=\"msg\" class=\"alert alert-danger alert-dismissible\" role=\"alert\" >");
 msgHtml.push(" <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>");
@@ -91,25 +84,3 @@ function ajaxInit() {
 	});
 }
 
-function menuBarChange() {
-
-	$(".menu-bar").toggle(
-			500,
-			function() {
-				if ($(".menu-btn").hasClass("pre")) {
-					$(".menu-btn").removeClass("pre");
-					$(".menu-btn").attr("src",
-							"image/menu_btn.png");
-				} else {
-					$(".menu-btn").addClass("pre");
-					$(".menu-btn").attr("src",
-							"image/menu_btn_pre.png");
-				}
-			});
-
-}
-
-$(document).ready(function() {
-	ajaxInit();
-
-});
