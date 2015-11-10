@@ -58,16 +58,15 @@ avalon.ready(function() {
 
 $(document).ready(function(){
 	//滚动模糊
-	var wh = $(window).height();
-	$(document).on('scroll',function() {
-		var sh = $(document).scrollTop();
-    	// $(".sh").text(sh);
-	    var blur_px = parseInt(sh/wh*20);
-	    $('.blur').css('-webkit-filter','blur('+blur_px+'px)');
-	    $('.blur').css('-moz-filter','blur('+blur_px+'px)');
-	    $('.blur').css('-ms-filter','blur('+blur_px+'px)');
-	    $('.blur').css('filter','blur('+blur_px+'px)');
-	});
+	// var wh = $(window).height();
+	// $(document).on('scroll',function() {
+	// 	var sh = $(document).scrollTop();
+	//     var blur_px = parseInt(sh/wh*20);
+	//     $('.blur').css('-webkit-filter','blur('+blur_px+'px)');
+	//     $('.blur').css('-moz-filter','blur('+blur_px+'px)');
+	//     $('.blur').css('-ms-filter','blur('+blur_px+'px)');
+	//     $('.blur').css('filter','blur('+blur_px+'px)');
+	// });
 });
 
 
