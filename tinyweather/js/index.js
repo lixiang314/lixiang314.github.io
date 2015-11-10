@@ -88,6 +88,9 @@ $(window).load(function(){
 	var dailywindArr = $('.daily-wind-deg').text().split('-');
 	$('.daily-wind-point').each(function(j,e0){
 		$(this).show().css('-webkit-transform','rotate('+dailywindArr[j]+'deg)');
+		$(this).show().css('-ms-transform','rotate('+dailywindArr[j]+'deg)');
+		$(this).show().css('-moz-transform','rotate('+dailywindArr[j]+'deg)');
+		$(this).show().css('-o-transform','rotate('+dailywindArr[j]+'deg)');
 	});
 
 })
