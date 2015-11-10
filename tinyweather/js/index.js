@@ -1,11 +1,34 @@
 var cityname = $.cookie('CITY_NAME');
+// var cityname = "hangzhou";
+var weekMap = {
+		'0':'周日',
+		'1':'周一',
+		'2':'周二',
+		'3':'周三',
+		'4':'周四',
+		'5':'周五',
+		'6':'周六',
+	};
 
 $(document).ready(function() {
 	// checkCookie();
+	$('.info-base').css('height',$(window).height()-65);
 });
 
 
 avalon.ready(function() {
+	avalon.filters.timeFilter = function(str){
+		var timeArr = str.split(" ");
+		return  timeArr[1];
+	}
+
+	avalon.filters.weekFilter = function(str){
+		var DateArr = str.split("-");
+		var thisdate = new Date(DateArr[0],DateArr[1]-1,DateArr[2])
+		return weekMap[thisdate.getDay()];
+	}
+
+
 	vmodel = avalon.define("page", function(vm) {
 		vm.result= {};
 	});
@@ -24,19 +47,56 @@ avalon.ready(function() {
 		});
 	}
 
-
 	if(cityname!=null){
 		getInfo(cityname);
 	}
 
-
-
 });
+
+
+
+
+$(document).ready(function(){
+	//滚动模糊
+	var wh = $(window).height();
+	$(document).on('scroll',function() {
+		var sh = $(document).scrollTop();
+    	// $(".sh").text(sh);
+	    var blur_px = parseInt(sh/wh*20);
+	    $('.blur').css('-webkit-filter','blur('+blur_px+'px)');
+	    $('.blur').css('-moz-filter','blur('+blur_px+'px)');
+	    $('.blur').css('-ms-filter','blur('+blur_px+'px)');
+	    $('.blur').css('filter','blur('+blur_px+'px)');
+	});
+});
+
+
+$(window).load(function(){
+
+	//降水概率图表
+	var popArr = $('.pop-num').text().split('%');
+	$('.pop-chart').each(function(i,e){
+		$(this).css('width',popArr[i]+'%');
+	});
+
+	// 风向图标
+	var windArr = $('.wind-deg').text().split('-');
+	$('.wind-point').each(function(i,e){
+		$(this).css('-webkit-transform','rotate('+windArr[i]+'deg)');
+	});
+
+	var dailywindArr = $('.daily-wind-deg').text().split('-');
+	$('.daily-wind-point').each(function(j,e0){
+		$(this).show().css('-webkit-transform','rotate('+dailywindArr[j]+'deg)');
+	});
+
+})
+
 
 function getInfo(city) {
 	$.ajax({
-		url : 'http://apis.baidu.com/heweather/weather/free?city='+city,
-		// url : 'testData.json',
+		// url : 'http://apis.baidu.com/heweather/weather/free?city='+city,
+		url : 'testData.json',
 		dataType : 'json',
 		type : "get",
 		async : false,
@@ -45,6 +105,7 @@ function getInfo(city) {
 		},
 		success : function(data) {
 			if(data['HeWeather data service 3.0'][0].status=='ok'){
+				$('.form-inoput-city').fadeOut(300);
 				vmodel.result = data['HeWeather data service 3.0'][0];
 			}
 			else if(data['HeWeather data service 3.0'][0].status=='unknown city'){
@@ -57,55 +118,3 @@ function getInfo(city) {
 
 
 
-// function getCookie(c_city)
-// {
-// 	if (document.cookie.length>0)
-// 	{
-// 		c_start=document.cookie.indexOf(c_city + "=")
-// 		if (c_start!=-1)
-// 		{
-// 			c_start=c_start + c_city.length+1
-// 			c_end=document.cookie.indexOf(";",c_start)
-// 			if (c_end==-1) c_end=document.cookie.length
-// 				return unescape(document.cookie.substring(c_start,c_end))
-// 		}
-// 	}
-// 	return ""
-// }
-
-// function setCookie(c_city,value,expiredays)
-// {
-// 	var exdate=new Date()
-// 	exdate.setDate(exdate.getDate()+expiredays)
-// 	document.cookie=c_city+ "=" +escape(value)+
-// 	((expiredays==null) ? "" : "; expires="+exdate.toGMTString())
-// }
-
-
-// function checkCookie() {
-// 	cityName=getCookie('cityName')
-// 	if (cityName!=null && cityName!="")
-// 	{
-// 			// cookie中已经存在城市名
-// 			alert(cityname);
-// 		}
-// 		else
-// 		{
-// 			$('.form-inoput-city').show();
-
-// 			$('#btn-ok').click(function(){
-// 				var inputCity = $('[name=input-city-name]').val();
-// 				if(inputCity==""){
-// 					alert('请输入城市名!');
-// 					return;
-// 				}
-// 				cityName = inputCity;
-// 				if (cityName!=null && cityName!=""){
-// 					getInfo(cityname);
-// 					setCookie('cityName',cityName,365);
-// 				}
-// 			});
-
-
-// 		}
-// 	}
