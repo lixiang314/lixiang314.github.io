@@ -206,6 +206,7 @@ body {
 	margin-top: 0.5rem;
 	width: 160%;
 	white-space:nowrap;
+	-webkit-overflow-scrolling: touch;
 }
 .daily-block {
 	width: 14%;
