@@ -1,5 +1,5 @@
-var cityname = $.cookie('CITY_NAME');
-// var cityname = "hangzhou";
+// var cityname = $.cookie('CITY_NAME');
+var cityname = "hangzhou";
 var weekMap = {
 		'0':'周日',
 		'1':'周一',
