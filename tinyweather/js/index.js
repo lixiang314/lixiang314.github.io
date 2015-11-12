@@ -55,24 +55,35 @@ avalon.ready(function() {
 
 
 
-
+var blur_px;
+var s1 = 0;
+var s2 = 0;
+var wh = $(window).height();
 $(document).ready(function(){
 	//滚动模糊
-	// var wh = $(window).height();
-	// $(document).on('scroll',function() {
-	// 	var sh = $(document).scrollTop();
-
-	//     var blur_px = parseInt(sh/wh*10);
-	//     if(blur_px>10){
-	//     	blur_px=10;
-	//     }
-	//     $('.blur').css('-webkit-filter','blur('+blur_px+'px)');
-	//     $('.blur').css('-moz-filter','blur('+blur_px+'px)');
-	//     $('.blur').css('-ms-filter','blur('+blur_px+'px)');
-	//     $('.blur').css('filter','blur('+blur_px+'px)');
-	// });
-
+	$(document).on('scroll',function() {
+		var sh = $(document).scrollTop();
+	    if(sh*2<wh){
+	    	s1 = s2;
+	    	s2 = 0;
+	    	blurpx = 0;
+	    }else {
+	    	s1 = s2;
+	    	s2 = 1;
+	    	blurpx = 10;
+	    }
+	    if(s1!=s2){
+	    	switchBlur(blurpx);
+	    }
+	});
 });
+
+function switchBlur(blurpx) {
+	$('.blur').css('-webkit-filter','blur('+blurpx+'px)');
+	$('.blur').css('-moz-filter','blur('+blurpx+'px)');
+	$('.blur').css('-ms-filter','blur('+blurpx+'px)');
+	$('.blur').css('filter','blur('+blurpx+'px)');
+}
 
 
 $(window).load(function(){
