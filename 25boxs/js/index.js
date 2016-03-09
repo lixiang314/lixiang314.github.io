@@ -26,8 +26,8 @@ $('#restartGame').on('click',function() {
 function gameInit() {
   $('.begin-num').hide();
   getBox();
-  var boxHeight = $('.num-box').width();
-  $('.num-box').css('height',boxHeight+'px');
+  var boxHeight = $('.num-box1').width();
+  $('.num-box1').css('height',boxHeight+'px');
   eventNum(1);
   timeCount.start();
 }
@@ -43,7 +43,7 @@ function getBox(){
    arr.sort(function(){ return 0.5 - Math.random() });
    var boxHtml = [];
    $.each(arr,function(i){
-     boxHtml.push('<div class="num-box num-'+arr[i]+'"><p>'+arr[i]+'</p></div>');
+     boxHtml.push('<div class="num-box1 num-'+arr[i]+'"><p>'+arr[i]+'</p></div>');
    })
    $('.game-table').html(boxHtml.join(""));
 }
@@ -51,7 +51,7 @@ function getBox(){
 // 依次给每个方块添加事件
 function eventNum(i) {
   $('.num-'+i).on('click',function(){
-    $(this).addClass('num-box-off').unbind('click');
+    $(this).addClass('num-box-off1').unbind('click');
     if(i<25){
       eventNum(i+1);
     }
