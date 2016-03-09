@@ -7,7 +7,7 @@ font-family: 'Arial-Black'; /*这里是说明调用来的字体名字*/
 src: url("Arial Black.ttf"); /*这里是字体文件路径*/
 }
 body {
-  font-family: 'sans-serif';
+  font-family: "Arial-Black";
   font-weight: 900;
 }
 button {
@@ -27,6 +27,7 @@ button {
   width: 90%;
 }
 .num-box {
+  font-family: 'sans-serif';
   background-image: url(../img/btn_num.png);
   background-size: 100% 200%;
 
@@ -36,10 +37,10 @@ button {
 }
 
 .num-box-off {
-  background-image: url(../img/btn_num.png);
-  background-size: 100% 200%;
+  /*background-image: url(../img/btn_num.png);*/
+  /*background-size: 100% 200%;*/
   background-position: 0 -100%;
-  position: relative;
+  /*position: relative;*/
 }
 .num-box-off p{
   position: relative;
