@@ -16,7 +16,9 @@ $('#startGame').on('click',function() {
 });
 //重新开始
 $('#restartGame').on('click',function() {
-  $('.begin-num').text(2);
+  $(this).hide();
+  $('#gameover').hide();
+  $('.begin-num').text(2).show();
   setTimeout(function(){$('.begin-num').text(1);},1000);
   setTimeout(function(){$('.begin-num').text(0);},2000);
   setTimeout(function(){gameInit();},3000);
@@ -26,8 +28,8 @@ $('#restartGame').on('click',function() {
 function gameInit() {
   $('.begin-num').hide();
   getBox();
-  var boxHeight = $('.num-box1').width();
-  $('.num-box1').css('height',boxHeight+'px');
+  var boxHeight = $('.num-box').width();
+  $('.num-box').css('height',boxHeight+'px');
   eventNum(1);
   timeCount.start();
 }
@@ -37,43 +39,43 @@ function gameInit() {
 // 插入25个方块
 function getBox(){
   var arr=[];
-   for(var i=0;i<25;i++){
-           arr[i]=i+1;
-       }
-   arr.sort(function(){ return 0.5 - Math.random() });
-   var boxHtml = [];
-   $.each(arr,function(i){
-     boxHtml.push('<div class="num-box1 num-'+arr[i]+'"><p>'+arr[i]+'</p></div>');
-   })
-   $('.game-table').html(boxHtml.join(""));
+  for(var i=0;i<25;i++){
+    arr[i]=i+1;
+  }
+  arr.sort(function(){ return 0.5 - Math.random() });
+  var boxHtml = [];
+  $.each(arr,function(i){
+    boxHtml.push('<div class="num-box num-'+arr[i]+'"><p>'+arr[i]+'</p></div>');
+  })
+  $('.game-table').html(boxHtml.join(""));
 }
 
 // 依次给每个方块添加事件
 function eventNum(i) {
-  $('.num-'+i).on('click',function(){
-    $(this).addClass('num-box-off1').unbind('click');
-    if(i<25){
+  if(i<=25){
+    $('.num-'+i).on('click',function(){
+      $(this).addClass('num-box-off').unbind('click');
       eventNum(i+1);
+    });
+  }
+  else if(i===26){
+    timeCount.stop();
+    console.log($('#time').text()+'秒');
+    var score = $('#time').text();
+    $('#score').text(score);
+    if(localStorage.getItem('highest') && score < localStorage.getItem('highest')){
+      localStorage.setItem('highest',score);
+      $('#highest').text(score);
     }
-    if(i===25){
-      timeCount.stop();
-      console.log($('#time').text()+'秒');
-      var score = $('#time').text();
-      $('#score').text(score);
-      if(localStorage.getItem('highest') && score < localStorage.getItem('highest')){
-        localStorage.setItem('highest',score);
-        $('#highest').text(score);
-      }
-      else if(!localStorage.getItem('highest')){
-        $('#highest').text(score);
-      }
-      $('#score').text(score);
-      $('#gameover').show();
-      $('#restartGame').show();
-      $('.game-table').html("");
+    else if(!localStorage.getItem('highest')){
+      $('#highest').text(score);
+    }
+    $('#score').text(score);
+    $('#gameover').show();
+    $('#restartGame').show();
+    $('.game-table').html("");
+  }
 
-    }
-  })
 }
 
 // 计时对象
