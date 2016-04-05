@@ -152,18 +152,18 @@ function getInfo() {
 }
 
 // 获得背景图片，使用知乎日报api
-$.ajax({
-  url:'http://news-at.zhihu.com/api/4/start-image/1080*1776',
-  dataType : 'json',
-  type : "get",
-  async : false,
-  dataType:"json",
+// $.ajax({
+//   url:'http://news-at.zhihu.com/api/4/start-image/1080*1776',
+//   dataType : 'json',
+//   type : "get",
+//   async : false,
+//   dataType:"json",
 
-  success:function (data) {
-    $('.backimg').css('background','url('+data.img+') center / contain no-repeat')
+//   success:function (data) {
+//     $('.backimg').css('background','url('+data.img+') center / contain no-repeat')
 
-  }
-})
+//   }
+// })
 
 
 // 将ASCII编码转化为汉字
