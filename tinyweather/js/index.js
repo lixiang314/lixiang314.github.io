@@ -1,5 +1,7 @@
 var vmodel;
 
+// 获取城市名
+// remote_ip_info是新浪接口提供的位置json数据
 var cityname = ascii2native(remote_ip_info.city);
 var weekMap = {
 		'0':'周日',
@@ -19,25 +21,22 @@ $(document).ready(function() {
   });
 });
 
-
+// 初始化模板语言框架
 avalon.ready(function() {
 	avalon.filters.timeFilter = function(str){
 		var timeArr = str.split(" ");
 		return  timeArr[1];
 	}
 
+  // 过滤器，将日期转化为星期
 	avalon.filters.weekFilter = function(str){
 		var DateArr = str.split("-");
 		var thisdate = new Date(DateArr[0],DateArr[1]-1,DateArr[2])
 		return weekMap[thisdate.getDay()];
 	}
-
-
-
 	vmodel = avalon.define("page", function(vm) {
 		vm.result= {};
 	});
-
   getInfo();
 });
 
@@ -66,6 +65,7 @@ $(document).ready(function(){
 	});
 });
 
+// 变模糊
 function switchBlur(blurpx) {
 	// $('.blur').css('transform','translate3d(0px, '+ blurpx +'px, 0px);');
 	$('.blur').css('-webkit-filter','blur('+blurpx+'px)');
@@ -76,7 +76,6 @@ function switchBlur(blurpx) {
 
 
 $(window).load(function(){
-
 	//降水概率图表
 	var popArr = $('.pop-num').text().split('%');
 	$('.pop-chart').each(function(i,e){
@@ -110,17 +109,11 @@ $(window).load(function(){
 
 })
 
-/**
- * get the weather info
- * @method get weather info
- * @param  {[type]} city [city]
- * @return {[type]}      [description]
- */
+
+// 使用ajax获得天气预报数据
 function getInfo() {
 	$.ajax({
 		url : 'http://apis.baidu.com/heweather/weather/free?city='+cityname,
-    // url : 'http://apis.baidu.com/heweather/weather/free?cityip='+cityip,
-
 		dataType : 'json',
 		type : "get",
 		async : false,
@@ -141,7 +134,6 @@ function getInfo() {
 				else {
 					vmodel.result.now.humtxt = "舒适";
 				}
-
 			}
 			else if(data['HeWeather data service 3.0'][0].status=='unknown city'){
 				alert('城市名不对');
@@ -150,20 +142,6 @@ function getInfo() {
 		}
 	});
 }
-
-// // 获得背景图片，使用知乎日报api
-// $.ajax({
-//   url:'http://news-at.zhihu.com/api/4/start-image/1080*1776',
-//   dataType : 'json',
-//   type : "get",
-//   async : false,
-//   dataType:"json",
-
-//   success:function (data) {
-//     $('.backimg').css('background','url('+data.img+') center / contain no-repeat')
-
-//   }
-// })
 
 
 // 将ASCII编码转化为汉字
