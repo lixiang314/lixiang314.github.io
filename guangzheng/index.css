@@ -1,0 +1,313 @@
+html {
+  font-size: 16px;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #740001;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+body>.container {
+  margin-top: 70px;
+}
+/*导航栏*/
+
+.header-logo {
+  height: 70px;
+  float: left;
+}
+.nav-ul {
+  float: left;
+}
+.nav-item {
+  display: block;
+  margin: 25px 0;
+  border-left: 1px solid #ccc;
+  text-align: center;
+  width: 89px;
+  color: #555;
+  line-height: 20px;
+  list-style: none;
+  float: left;
+}
+.nav-item:nth-child(1){
+  border-left: none;
+}
+.nav-active a{
+  font-weight: 900;
+  color: #af3b25;
+}
+
+/*大图部分*/
+
+.img-main {
+  width: 100%;
+}
+.title-group {
+  width: 100%;
+  overflow: none;
+  height: 40px;
+  position: relative;
+  margin: 40px 0 20px 0;
+}
+.space {
+  position: absolute;
+  top: -80px;
+}
+.title-text {
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 40px;
+  margin-left: 20px;
+  font-weight: 900;
+}
+.title-left {
+  position: absolute;
+  left: 0;
+  width: 160px;
+  height: 40px;
+  background: url(img/title_left.png) no-repeat;
+  background-size: cover;
+}
+.title-right {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  left: 160px;
+  background: url(img/title_right.png);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+/*寄语部分*/
+
+.paper-bg {
+  margin: 2rem;
+  background-color: #a32329;
+  color: #fdca08;
+  padding: 3rem 2rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 10px 10px 5px #888888;*/
+}
+.paper-bg p {
+  color: #FFCE00;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-indent: 2.2rem;
+}
+.p-tag {
+  font-weight: 900;
+  color: #fff;
+}
+
+/*课程特色*/
+
+.course-special {
+
+  padding: 1rem 1rem;
+  overflow: hidden;
+  position: relative;
+  margin: 1rem 0;
+}
+.course-tag {
+  color:#FFD300;
+  font-weight: 900;
+}
+.course-special:nth-child(1) {
+  background-color: #BC8E56;
+}
+.course-special:nth-child(2) {
+  background-color: #3DA4AE;
+}
+.course-special:nth-child(3) {
+  background-color: #CF467A;
+}
+.course-special:nth-child(4) {
+  background-color: #975FA5;
+}
+.course-article-left {
+  float: left;
+  width: 60%;
+}
+.course-article-right {
+  float: right;
+  width: 60%;
+}
+.course-title {
+  font-size: 3rem;
+  line-height: 4rem;
+  font-weight: 900;
+  color: #FFF500;
+}
+.course-desc {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+.img-course-right {
+  float: right;
+  width: 30%;
+}
+.img-course-left {
+  float: left;
+  width: 30%;
+}
+.img-teacher {
+  width: 100%;
+}
+.box-teacher {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  float: left;
+  width: 20%;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+}
+.teacher-desc {
+  position: absolute;
+  width: 290px;
+  height: 175px;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  display: none;
+  z-index: 10;
+}
+.sec-teacher {
+  overflow: hidden;
+}
+
+/*课程安排*/
+.course-plan {
+  color: #fff;
+}
+.course-plan h2 {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  color: #FFD300;
+}
+
+.course-plan h3 {
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  text-indent: 2rem;
+  color: #aaa;
+}
+.course-plan p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-indent: 3rem;
+}
+
+/*光政风采*/
+.swiper-container {
+    width: 100%;
+}
+.swiper-slide img{
+  width: 100%;
+}
+
+/*联系我们*/
+.tel-item {
+  margin: 1rem 0;
+  padding: 0 0 0 10%;
+  width: 40%;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  color: #fff;
+  float: left;
+}
+.tel-item p:nth-child(1) {
+  color: #FFD800;
+  font-weight: 900;
+}
+
+.qrcode {
+  margin: 0 10%;
+  width: 30%;
+  float: left;
+}
+.qrcode-text {
+  width: 50%;
+  margin-top: 90px;
+  float: left;
+  color: #FFD800;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: 900;
+}
+/*底部*/
+footer {
+  margin-top: 30px;
+  background-color: #3E3E3E;
+  padding: 1.1rem 0;
+  color:#C9C9C9;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+footer a {
+  color:#C9C9C9;
+}
+footer .container {
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/*其他*/
+.box-tel {
+  text-align: center;
+  position: fixed;
+  top: 90px;
+  z-index: 99;
+  right: 10px;
+  /*padding: 0.7rem 1.5rem;*/
+  border-radius: 10px;
+  background-color: #FDF13B;
+  color: #000;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  overflow: hidden;
+}
+.box-tel p {
+  padding: 0 1rem;
+}
+.box-tel p:nth-child(1) {
+  background-color: rgb(207, 140, 11);
+  color: #fff;
+}
+.box-tel p:nth-child(2) {
+  border-bottom: 2px solid rgb(207, 140, 11);
+}
