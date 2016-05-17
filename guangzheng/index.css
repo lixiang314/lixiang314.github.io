@@ -7,6 +7,7 @@ html {
 }
 body {
   background-color: #740001;
+  font-family: sans-serif;
 }
 a {
   text-decoration: none;
@@ -99,7 +100,7 @@ body>.container {
   background-size: auto 100%;
 }
 
-/*寄语部分*/
+/*寄语*/
 
 .paper-bg {
   margin: 2rem;
@@ -114,6 +115,7 @@ body>.container {
   font-size: 1.1rem;
   line-height: 1.8rem;
   text-indent: 2.2rem;
+  font-weight: 900;
 }
 .p-tag {
   font-weight: 900;
@@ -172,6 +174,8 @@ body>.container {
   float: left;
   width: 30%;
 }
+
+/*师资团队*/
 .img-teacher {
   width: 100%;
 }
@@ -190,6 +194,18 @@ body>.container {
   top: 0;
   left:0;
   background-color: rgba(0,0,0,0.5);
+}
+.teacher-name {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
 }
 .teacher-desc {
   position: absolute;
