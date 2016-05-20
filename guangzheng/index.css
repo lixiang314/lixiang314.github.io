@@ -45,7 +45,7 @@ body>.container {
   margin: 25px 0;
   border-left: 1px solid #ccc;
   text-align: center;
-  width: 89px;
+  width: 85px;
   color: #555;
   line-height: 20px;
   list-style: none;
@@ -227,7 +227,9 @@ body>.container {
 /*课程安排*/
 .course-plan {
   color: #fff;
+  overflow: hidden;
 }
+
 .course-plan h2 {
   font-size: 1.5rem;
   line-height: 3rem;
@@ -244,6 +246,46 @@ body>.container {
   font-size: 1.1rem;
   line-height: 2rem;
   text-indent: 3rem;
+}
+.plan-box {
+  float: left;
+  width: 50%;
+}
+.plan-table {
+  color: #FFD300;
+  margin: 8rem 0 0 0;
+  width: 100%;
+  border-width: 1px;
+	border-color: #444;
+	border-collapse: collapse;
+}
+.plan-table td{
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.5rem;
+  text-align: center;
+  border-width: 1px;
+	padding: 3px 0;
+	border-style: solid;
+  border-color: #ccc;
+}
+
+.fee-table {
+  color: #FFD300;
+  width: 100%;
+  border-width: 1px;
+	border-color: #444;
+	border-collapse: collapse;
+}
+.fee-table td{
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.5rem;
+  text-align: center;
+  border-width: 1px;
+	padding: 3px 0;
+	border-style: solid;
+  border-color: #ccc;
 }
 
 /*光政风采*/
