@@ -6,7 +6,7 @@ email: lixzap@gmail.com
 description: ""
 keyword: ""
 url: "http://huangxuan.me"              # your host, for absolute URL
-baseurl: "/lixzapes"         # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 

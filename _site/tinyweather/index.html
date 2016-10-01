@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=yes">
+  <meta http-equiv="Expires" CONTENT="-1">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+
+  <title>简天气</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body ms-controller="page">
+  <div class="backimg blur"></div>
+  <div class="container">
+
+
+    <div class="div-allinfo">
+      <div class="info-top">
+        <p ms-text="result.basic.update.loc"></p>
+        <p ms-text="result.basic.city"></p>
+      </div>
+      <div class="info-base">
+        <div class="bg-gradient-base"></div>
+        <div class="info-base-left">
+          <p ms-text="result.now.cond.txt" class="base-cond"></p>
+          <p ms-text="result.now.tmp+'°'" class="base-tmp"></p>
+        </div>
+        <div class="info-base-center">
+          <p>湿度</p>
+          <p>气压</p>
+          <p>降水量</p>
+          <p>PM2.5</p>
+        </div>
+        <div class="info-base-right">
+          <p ms-text="result.now.hum+'%'"></p>
+          <p ms-text="result.now.pres"></p>
+          <p ms-text="result.now.pcpn+'mm'"></p>
+          <p ms-text="result.aqi.city.pm25+'('+result.aqi.city.qlty+')'"></p>
+        </div>
+      </div>
+
+
+
+      <div class="info-detail">
+
+        <!-- 今日预报 -->
+        <div class="section-title-block">
+          <p class="section-title">今日预报 (每3小时)</p>
+          <hr>
+        </div>
+        <div class="info-detail-hourly detail-section">
+
+          <table>
+            <tbody>
+              <tr>
+                <td>时间</td>
+                <td>温度</td>
+                <td>降水概率</td>
+                <td>风力</td>
+                <td>风向</td>
+              </tr>
+              <tr ms-repeat="result.hourly_forecast">
+                <td ms-text="el.date | timeFilter"></td>
+                <td ms-text="el.tmp+'°'"></td>
+                <td class="pop-td">
+                  <span ms-text="el.pop+'%'" class="pop-num"></span>
+                  <span class="pop-chart"></span>
+                </td>
+                <td>
+                  <span ms-text="el.wind.sc"></span>
+
+                </td>
+                <td class="wind-td">
+                  <span ms-text="el.wind.deg+'-'" class="wind-deg hide"></span>
+                  <img src="img/wind_pointer.png" class="wind-point">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- 一周预报 -->
+        <div class="section-title-block">
+          <p class="section-title">一周预报</p>
+          <hr>
+        </div>
+        <div class="info-detail-daily detail-section">
+          <div class="parent-daily">
+            <div class="daily-block" ms-repeat="result.daily_forecast">
+              <p ms-text="el.date | weekFilter" class="daily-weekday"></p>
+              <div class="block-cond-icon">
+                <img ms-src="'img/condicon/'+el.cond.code_d+'.png'" alt="" class="img-cond">
+                <p ms-text="el.cond.txt_d"></p>
+              </div>
+              <div class="daily-tmp">
+                <p ms-text="el.tmp.max+'°'" class="daily-tmp-max"></p>
+                <p ms-text="el.tmp.min+'°'" class="daily-tmp-min">
+                </P>
+              </div>
+
+              <span ms-text="el.wind.deg+'-'" class="daily-wind-deg hide"></span>
+              <img src="img/wind_pointer.png" class="daily-wind-point hide">
+              <p ms-text="el.wind.dir"></p>
+              <p ms-text="el.wind.sc"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title-block">
+          <p class="section-title">湿度和体感</p>
+          <hr>
+        </div>
+        <div class="info-detail-hum detail-section">
+          <div class="dashboard" ms-attr-value="result.now.hum">
+            <img src="img/dashboard.png" class="dashboard-watch">
+            <img src="img/dashboard_pointer.png" class="dashboard-pointer">
+          </div>
+          <p ms-text="'体感：'+result.now.humtxt" class="hum-txt"></p>
+        </div>
+
+
+        <div class="section-title-block">
+          <p class="section-title">生活建议</p>
+          <hr>
+        </div>
+        <div class="info-detail-suggest detail-section">
+          <div class="sg-txt">
+            <p>舒适度指数：<span ms-text="result.suggestion.comf.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.comf.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>洗车指数：　<span ms-text="result.suggestion.cw.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.cw.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>穿衣指数：　<span ms-text="result.suggestion.drsg.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.drsg.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>感冒指数：　<span ms-text="result.suggestion.flu.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.flu.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>运动指数：　<span ms-text="result.suggestion.sport.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.sport.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>旅游指数：　<span ms-text="result.suggestion.trav.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.trav.txt"></p>
+          </div>
+          <div class="sg-txt">
+            <p>紫外线指数：<span ms-text="result.suggestion.uv.brf"></span></p>
+            <p class="sg-info" ms-text="result.suggestion.uv.txt"></p>
+          </div>
+
+        </div>
+
+
+        <div class="data-source-info">
+          <p>数据来自 <span>和风天气®<span></p></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <!-- 获取用户位置 -->
+    <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+    <script src="js/avalon.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
