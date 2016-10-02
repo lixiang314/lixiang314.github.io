@@ -1,0 +1,83 @@
+---
+layout:     post
+title:      "使用jekyll来生成属于你自己的博客网站"
+subtitle:   "简单易上手"
+date:       2016-10-01
+author:     "Lixzap"
+header-img: "img/post-bg-js-module.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---
+
+
+很遗憾，本次教程只针对macOS系统，所以如果你是其他系统，有些细节可能有所差异，不过可以参考。
+
+macOS自带ruby，所以不必安装，我们先来确认一下：
+
+```
+$ ruby -v
+ruby 2.0.0p645 (2015-04-13 revision 50299) [universal.x86_64-darwin15]
+```
+
+然后更新一下gem（可能需要翻墙）：
+
+```
+$ sudo gem update --system
+```
+
+接下来可以用gem安装jekyll了：
+
+```
+$ gem install jekyll
+```
+
+这里如果有以下报错：
+
+```
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Please specify at least one gem name (e.g. gem build GEMNAME)
+```
+
+去stackoverflow找了一下原因：
+
+> Apparently with OSX el Capitan, there is a new security function that prevents you from modifying system files called Rootless.
+>
+> ——RōŸ Çāłdērōn, from stackoverflow.com
+
+好吧，OSX11不给安装到根目录，那我换到`/usr/local/bin`去。
+
+```
+sudo gem install -n /usr/local/bin jekyll
+```
+
+这样就把jekyll安装好了。确认一下：
+
+```
+$ jekyll -v
+jekyll 3.2.1
+```
+
+jekyll安装成功之后，我们只成功了10%。哈哈哈哈哈哈。
+
+之前的步骤都是准备工作，我们现在才要开始制作我们的jekyll博客，想要做的漂亮得花很多时间，懒癌晚期的我是不打算自己写一个的，所以我们直接使用现成的博客。去Github找一个漂亮的jekyll模板，直接clone到本地。这样我们就成功了90%。
+
+我作为教程，使用的是Github用户Huxpro的模板。
+
+把他的模板clone到本地后，进入模板根目录，执行：
+
+```
+$ jekyll server
+```
+
+在_config.yml文件中配置博客的一些参数（如博客名等）。
+
+而所有博客文件（一般是markdown格式），都在`/_posts`目录下。
+
+在浏览器打开`localhost:4000`，就能预览这个模板。
+
+把这整个目录部署到服务器上以供他人访问。我推荐Github Pages来部署你的博客。
+
+关于，怎么使用Github Pages，由于时间关系，我就不赘述了，本集完。
+
+如果你在配置过程中遇到任何问题，请留言。

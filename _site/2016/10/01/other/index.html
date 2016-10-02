@@ -6,22 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+    <meta name="description" content="dddd">
+    <meta name="keyword"  content="李响的博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Example Post using Keynote Layout - 你的博客 | Your Blog</title>
+    <title>使用jekyll来生成属于你自己的博客网站 - 李响的博客</title>
 
-    <link rel="canonical" href="http://lixiang314.github.io/blog/2015/07/09/js-module-7day/">
+    <link rel="canonical" href="//2016/10/01/other/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/blog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/blog/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/blog/css/syntax.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -62,7 +62,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/blog/">Your Blog</a>
+            <a class="navbar-brand" href="/">Lixzap's blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,15 +75,15 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/blog/">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     
                     <li>
-                        <a href="/blog/about/">About</a>
+                        <a href="/about/">About</a>
                     </li>
                     
                     <li>
-                        <a href="/blog/tags/">Tags</a>
+                        <a href="/tags/">Tags</a>
                     </li>
                     
                 </ul>
@@ -125,45 +125,36 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/blog/img/post-bg-js-version.jpg" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-module.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        /*background-image: url('/blog/img/post-bg-js-version.jpg')*/
-        height: 500px;
-        overflow: hidden;
-    }
-    header iframe{
-        width: 100%;
-        height: 100%;
-        border: 0;
+        background-image: url('/img/post-bg-js-module.jpg')
     }
 </style>
 <header class="intro-header" >
-    <iframe src="http://huangxuan.me/js-module-7day/"/>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                            <a class="tag" href="/blog/tags/#前端开发" title="前端开发">前端开发</a>
-                            
-                            <a class="tag" href="/blog/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                            
-                        </div>
-                        <h1>Example Post using Keynote Layout</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
                         
+                        <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                        <h2 class="subheading">Keynote: JavaScript Modularization Journey</h2>
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
-                        <span class="meta">Posted by Hux on July 9, 2015</span>
                     </div>
+                    <h1>使用jekyll来生成属于你自己的博客网站</h1>
+                    
+                    
+                    <h2 class="subheading">简单易上手</h2>
+                    
+                    <span class="meta">Posted by Lixzap on October 1, 2016</span>
                 </div>
             </div>
         </div>
-    </iframe>
+    </div>
 </header>
 
 <!-- Post Content -->
@@ -171,42 +162,84 @@
     <div class="container">
         <div class="row">
 
-            <!-- Post Container -->
-            <div class="post-container
+    <!-- Post Container -->
+            <div class="
                 col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1 ">
+                col-md-10 col-md-offset-1
+                post-container">
 
-				<blockquote>
-  <p>下滑这里查看更多内容</p>
+				<p>很遗憾，本次教程只针对macOS系统，所以如果你是其他系统，有些细节可能有所差异，不过可以参考。</p>
+
+<p>macOS自带ruby，所以不必安装，我们先来确认一下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ruby -v
+ruby 2.0.0p645 (2015-04-13 revision 50299) [universal.x86_64-darwin15]
+</code></pre>
+</div>
+
+<p>然后更新一下gem（可能需要翻墙）：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem update --system
+</code></pre>
+</div>
+
+<p>接下来可以用gem安装jekyll了：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ gem install jekyll
+</code></pre>
+</div>
+
+<p>这里如果有以下报错：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ERROR:  While executing gem ... (Gem::CommandLineError)
+    Please specify at least one gem name (e.g. gem build GEMNAME)
+</code></pre>
+</div>
+
+<p>去stackoverflow找了一下原因：</p>
+
+<blockquote>
+  <p>Apparently with OSX el Capitan, there is a new security function that prevents you from modifying system files called Rootless.</p>
+
+  <p>——RōŸ Çāłdērōn, from stackoverflow.com</p>
 </blockquote>
 
-<p>7月9日，我在公司内部进行了名为「JavaScript 模块化七日谈」分享，并将该 Slides 分享到了微博上。出乎意料地，这篇微博先后被 @JS小组 @尤小右 @寸志 等近 200 人转发，阅读达到 10w，获得了还不错的评价。</p>
+<p>好吧，OSX11不给安装到根目录，那我换到<code class="highlighter-rouge">/usr/local/bin</code>去。</p>
 
-<p>于是，我决定将它重新发到我的博客上，并为它专门制作了适用于 Keynote 展示文稿的新布局。它能自动根据屏幕大小/旋转以一定比例填充屏幕，你也可以直接点击下方链接在新页面打开，来获得更好的、沉浸式的全屏体验</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install -n /usr/local/bin jekyll
+</code></pre>
+</div>
 
-<h3 id="watch-slides-httphuangxuanmejs-module-7day"><a href="http://huangxuan.me/js-module-7day">Watch Slides →</a></h3>
+<p>这样就把jekyll安装好了。确认一下：</p>
 
-<p><img src="http://huangxuan.me/js-module-7day/attach/qrcode.png" width="350" height="350" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll -v
+jekyll 3.2.1
+</code></pre>
+</div>
 
-<p><small class="img-hint">你也可以通过扫描二维码在手机上观看</small></p>
+<p>jekyll安装成功之后，我们只成功了10%。哈哈哈哈哈哈。</p>
 
-<p>这个 Web Slides 开源在<a href="https://github.com/Huxpro/js-module-7day">我的 Github 上</a>，欢迎你帮助我完善这个展示文稿，你可以给我提 issue，可以 fork &amp; pull request。如果它能帮助到你了，希望你还能不吝啬 star 一下这个项目</p>
+<p>之前的步骤都是准备工作，我们现在才要开始制作我们的jekyll博客，想要做的漂亮得花很多时间，懒癌晚期的我是不打算自己写一个的，所以我们直接使用现成的博客。去Github找一个漂亮的jekyll模板，直接clone到本地。这样我们就成功了90%。</p>
 
-<h3 id="catalog">Catalog</h3>
+<p>我作为教程，使用的是Github用户Huxpro的模板。</p>
 
-<ul>
-  <li>第一日 上古时期 <strong><em>Module?</em></strong> 从设计模式说起</li>
-  <li>第二日 石器时代 <strong><em>Script Loader</em></strong> 只有封装性可不够，我们还需要加载</li>
-  <li>第三日 蒸汽朋克 <strong><em>Module Loader</em></strong> 模块化架构的工业革命</li>
-  <li>第四日 号角吹响 <strong><em>CommonJS</em></strong> 征服世界的第一步是跳出浏览器</li>
-  <li>第五日 双塔奇兵 <strong><em>AMD/CMD</em></strong> 浏览器环境模块化方案</li>
-  <li>第六日 精灵宝钻 <strong><em>Browserify/Webpack</em></strong> 大势所趋，去掉这层包裹！</li>
-  <li>第七日 王者归来 <strong><em>ES6 Module</em></strong> 最后的战役</li>
-</ul>
+<p>把他的模板clone到本地后，进入模板根目录，执行：</p>
 
-<h3 id="thanks">Thanks</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll server
+</code></pre>
+</div>
 
-<p><a href="http://lab.hakim.se/reveal-js">Reveal.js</a></p>
+<p>在_config.yml文件中配置博客的一些参数（如博客名等）。</p>
+
+<p>而所有博客文件（一般是markdown格式），都在<code class="highlighter-rouge">/_posts</code>目录下。</p>
+
+<p>在浏览器打开<code class="highlighter-rouge">localhost:4000</code>，就能预览这个模板。</p>
+
+<p>把这整个目录部署到服务器上以供他人访问。我推荐Github Pages来部署你的博客。</p>
+
+<p>关于，怎么使用Github Pages，由于时间关系，我就不赘述了，本集完。</p>
+
+<p>如果你在配置过程中遇到任何问题，请留言。</p>
 
 
                 <hr>
@@ -216,14 +249,13 @@
                 </style>
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2015/07/09/js-module-7day" data-title="Example Post using Keynote Layout"
-                    data-images="http://lixiang314.github.io/blog/img/post-bg-js-version.jpg"
-                    data-content="
-  下滑这里查看更多内容
+                    data-thread-key="/2016/10/01/other"
+                    data-title="使用jekyll来生成属于你自己的博客网站"
+                    data-url="//2016/10/01/other/"
+                    data-images="//img/post-bg-js-module.jpg"
+                    data-content="很遗憾，本次教程只针对macOS系统，所以如果你是其他系统，有些细节可能有所差异，不过可以参考。
 
-
-7月9日，我在公司内部进行了名为「JavaScript 模块化七日谈」分享，并将该 Slides 分享到了微博上。出乎意料... | Hux Blog，@Hux黄玄 的个人博客"
-                    data-url="http://lixiang314.github.io/blog/2015/07/09/js-module-7day/">
+macOS自带ruby，所以不必安装，我们先来确认一下... | 李响的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -236,20 +268,16 @@
                     </div>
                 <hr>
                 </div>
-                <!-- 多少 Share end-->
+                <!-- 多说 Share end-->
                 
 
 
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/blog/2015/05/25/js-module-loader/" data-toggle="tooltip" data-placement="top" title="Example Post with Code Highlight">&larr; Previous Post</a>
+                        <a href="/2016/03/16/js-version/" data-toggle="tooltip" data-placement="top" title="快速入门JavaScript模块化">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/blog/2015/09/22/js-version/" data-toggle="tooltip" data-placement="top" title="Example Post">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
@@ -258,9 +286,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2015/07/09/js-module-7day"
-                        data-title="Example Post using Keynote Layout"
-                        data-url="http://lixiang314.github.io/blog/2015/07/09/js-module-7day/" >
+                        data-thread-key="/2016/10/01/other"
+                        data-title="使用jekyll来生成属于你自己的博客网站"
+                        data-url="//2016/10/01/other/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -270,10 +298,11 @@
 
             </div>
 
-            <!-- Sidebar Container -->
-            <div class="sidebar-container
+    <!-- Sidebar Container -->
+            <div class="
                 col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1 ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
                 <!-- Featured Tags -->
                 
@@ -281,30 +310,20 @@
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+        				
                             
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/blog/tags/#前端开发" title="前端开发" rel="3">
+                				<a href="/tags/#前端开发" title="前端开发" rel="2">
                                     前端开发
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/blog/tags/#JavaScript" title="JavaScript" rel="3">
+                				<a href="/tags/#JavaScript" title="JavaScript" rel="2">
                                     JavaScript
                                 </a>
                             
-                        
-                            
-                        
-                    </div>
+        				
+        			</div>
                 </section>
                 
 
@@ -313,8 +332,6 @@
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
                     
                         <li><a href="#">Foo</a></li>
                     
@@ -331,34 +348,11 @@
     </div>
 </article>
 
-<!-- resize header to fullscreen keynotes -->
-<script>
-    var $header = document.getElementsByTagName("header")[0];
-    function resize(){
-        /*
-         * leave 85px to both
-         * - told/imply users that there has more content below
-         * - let user can scroll in mobile device, seeing the keynote-view is unscrollable
-         */
-        $header.style.height = (window.innerHeight-85) + 'px';
-    }
-    document.addEventListener('DOMContentLoaded', function(){
-        resize();
-    })
-    window.addEventListener('load', function(){
-        resize();
-    })
-    window.addEventListener('resize', function(){
-        resize();
-    })
-    resize();
-</script>
-
 
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     // dynamic User by Hux
-    var _user = '条件状语从句';
+    var _user = 'Lixzap';
 
     // duoshuo comment query.
     var duoshuoQuery = {short_name: _user };
@@ -427,7 +421,7 @@
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/条件状语从句">
+                        <a target="_blank" href="https://www.zhihu.com/people/lixzap">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -460,14 +454,9 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Your Blog 2016
+                    Copyright &copy; Lixzap's blog 2016
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
-                    </iframe>
+                    Theme by Hux
                 </p>
             </div>
         </div>
@@ -475,13 +464,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="/blog/js/jquery.min.js "></script>
+<script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/blog/js/bootstrap.min.js "></script>
+<script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/blog/js/hux-blog.min.js "></script>
+<script src="/js/hux-blog.min.js "></script>
 
 
 <!-- async load function -->
@@ -496,14 +485,14 @@
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
 -->
 <!--
     <script>

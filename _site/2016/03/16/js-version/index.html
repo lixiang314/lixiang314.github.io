@@ -6,22 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+    <meta name="description" content="dddd">
+    <meta name="keyword"  content="李响的博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Example Post - 你的博客 | Your Blog</title>
+    <title>快速入门JavaScript模块化 - 李响的博客</title>
 
-    <link rel="canonical" href="http://lixiang314.github.io/blog/2015/09/22/js-version/">
+    <link rel="canonical" href="//2016/03/16/js-version/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/blog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/blog/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/blog/css/syntax.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -62,7 +62,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/blog/">Your Blog</a>
+            <a class="navbar-brand" href="/">Lixzap's blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,15 +75,15 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/blog/">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     
                     <li>
-                        <a href="/blog/about/">About</a>
+                        <a href="/about/">About</a>
                     </li>
                     
                     <li>
-                        <a href="/blog/tags/">Tags</a>
+                        <a href="/tags/">Tags</a>
                     </li>
                     
                 </ul>
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/blog/img/post-bg-js-version.jpg" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-module.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/blog/img/post-bg-js-version.jpg')
+        background-image: url('/img/post-bg-js-module.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -140,19 +140,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/blog/tags/#前端开发" title="前端开发">前端开发</a>
+                        <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                        <a class="tag" href="/blog/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                        
-                        <a class="tag" href="/blog/tags/#翻译" title="翻译">翻译</a>
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1>Example Post</h1>
+                    <h1>快速入门JavaScript模块化</h1>
                     
                     
-                    <h2 class="subheading">ES5, ES6, ES2016, ES.Next: What's going on with JavaScript versioning?</h2>
+                    <h2 class="subheading">JavaScript Modularization</h2>
                     
-                    <span class="meta">Posted by Hux on September 22, 2015</span>
+                    <span class="meta">Posted by Lixzap on March 16, 2016</span>
                 </div>
             </div>
         </div>
@@ -170,66 +168,115 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>JavaScript 有着很奇怪的命名史。</p>
+				<h2 id="section">前言</h2>
+<p>都说“不重复造轮子”，就像iPhone——它除了打电话还可以播放音乐——但是工程师不用从零开始做一个音乐播放功能，也许只要在iPhone的系统中整合一个ipod。</p>
 
-<p>1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名为 LiveScript。一年后，为了搭上当时媒体热炒 Java 的顺风车，临时改名为了 JavaScript <em>（当然，Java 和 JavaScript 的关系，就和雷锋和雷锋塔一样 —— 并没有什么关系）</em></p>
+<p>前端开发亦是如此，最理想化的开发状态就是，工程师只写核心业务代码，其他通用的功能和组件都可以无缝加载别人写好的代码，就像很多那样。</p>
 
-<p><img src="/img/in-post/post-js-version/javascript-java.jpg" alt="java-javascript" />
-<small class="img-hint">歪果仁的笑话怎么一点都不好笑</small></p>
+<p>可是实际情况是，有个糟糕的 iPhone 工程师，他搞混了 iPhone 和 ipod 的系统，甚至把 iPhone 的 Home 键和 iPod 的音量键焊在同一个。</p>
 
-<blockquote>
-  <p>译者注：<a href="https://en.wikipedia.org/wiki/JavaScript#History">wikipedia 的 JavaScript 词条</a> 更详细的叙述了这段历史</p>
-</blockquote>
+<p>还有一些糟糕 JavaScript 开发者，一不小心声明了全局变量，混乱了“命名空间”，都让协作开发变得不那么友好，抑或他开发了一个通用模块，用户们却发现载入了他的代码之后，用户自己的代码被他搞得一团糟。</p>
 
-<p>1996 年，网景将 JavaScript 提交给 <a href="http://www.ecma-international.org/">ECMA International（欧洲计算机制造商协会）</a> 进行标准化，并最终确定出新的语言标准，它就是 ECMAScript。自此，ECMAScript 成为所有 JavaScript 实现的基础，不过，由于 JavaScript 名字的历史原因和市场原因（很显然 ECMAScript 这个名字并不令人喜欢……），现实中我们只用 ECMAScript 称呼标准，平时都还是使用 JavaScript 来称呼这个语言。</p>
+<h2 id="section-1">原始人写法</h2>
 
-<blockquote>
-  <p>术语（译者注）：</p>
+<p>比如下面这段代码：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>var mylove = "coding";
 
-  <ul>
-    <li><em>标准（Standard）</em>： 用于定义与其他事物区别的一套规则</li>
-    <li><em>实现（Implementation）</em>： 某个标准的具体实施/真实实践</li>
-  </ul>
-</blockquote>
+function getLove() {
+  return mylove;
+}
 
-<p>不过，JavaScript 开发者们并不怎么在乎这些，因为在诞生之后的 15 年里，ECMAScript 并没有多少变化，而且现实中的很多实现都已经和标准大相径庭。其实在第一版的 ECMAScript 发布后，很快又跟进发布了两个版本，但是自从 1999 年 ECMAScript 3 发布后，十年内都没有任何改动被成功添加到官方规范里。取而代之的，是各大浏览器厂商们争先进行自己的语言拓展，web 开发者们别无选择只能去尝试并且支持这些 API。即使是在 2009 年 ECMAScript 5 发布之后，仍然用了数年这些新规范才得到了浏览器的广泛支持，可是大部分开发者还是写着 ECMAScript 3 风格的代码，并不觉得有必要去了解这些规范。</p>
+function sayLove(thing) {
+  console.log(thing);
+}
 
-<blockquote>
-  <p>译者注：<a href="https://en.wikipedia.org/wiki/ECMAScript#4th_Edition_.28abandoned.29">ECMAScript 第四版草案</a>由于太过激进而被抛弃，Adobe 的 <a href="https://en.wikipedia.org/wiki/ActionScript">ActionScript 3.0</a> 是 ECMAScript edition 4 的唯一实现（ Flash 差点就统一 Web 了）</p>
-</blockquote>
+console.log(getLove());//&gt;&gt;&gt; coding
+sayLove('girl');//&gt;&gt;&gt; girl
+</code></pre>
+</div>
 
-<p>到了 2012 年，事情突然开始有了转变。大家开始推动停止对旧版本 IE 浏览器的支持，用 ECMAScript 5 (ES5) 风格来编写代码也变得更加可行。与此同时，一个新的 ECMAScript 规范也开始启动。到了这时，大家开始逐渐习惯以对 ECMAScript 规范的版本支持程度来形容各种 JavaScript 实现。在正式被指名为 ECMAScript 第 6 版 (ES6) 之前，这个新的标准原本被称为 ES.Harmony（和谐）。2015 年，负责制定 ECMAScript 规范草案的委员会 TC39 决定将定义新标准的制度改为一年一次，这意味着每个新特性一旦被批准就可以添加，而不像以往一样，规范只有在整个草案完成，所有特性都没问题后才能被定稿。因此，ECMAScript 第 6 版在六月份公布之前，又被重命名为了 ECMAScript 2015（ES2015）</p>
+<p>在 window 对象下声明了一个变量<code class="highlighter-rouge">mylove</code>，然后使用<code class="highlighter-rouge">getLove()</code>函数去获取这个变量，使用<code class="highlighter-rouge">setLove()</code>修改这个变量。
+恩，功能是实现了。只是这样做之后，说不定什么时候你由于粗心又在某个地方声明了一次<code class="highlighter-rouge">mylove</code>，而你的粗心同事也不知道会在什么地方写了一个同名函数——也许有3个参数的<code class="highlighter-rouge">setLove()</code>函数。</p>
 
-<p>目前，仍然有很多新的 JavaScript 特性或语法正在提议中，包括 <a href="https://github.com/wycats/javascript-decorators">decorators（装饰者）</a>，<a href="https://github.com/lukehoban/ecmascript-asyncawait">async-await（async-await 异步编程模型）</a> 和 <a href="https://github.com/jeffmo/es-class-properties">static class properties（静态类属性）</a>。它们通常被称为 ES7，ES2016 或者 ES.Next 的特性，不过实际上它们只能被称作提案或者说可能性，毕竟 ES2016 的规范还没有完成，有可能全部都会引入，也有可能一个都没有。TC39 把一个提案分为 4 个阶段，你可以在 <a href="https://babeljs.io/docs/usage/experimental/">Babel 的官网</a> 上查看各个提案目前都在哪个阶段了。</p>
+<h2 id="section-2">对象封装写法</h2>
+<p>怎么办呢？你获取想到了，把这些变量和函数都写在一个对象里：</p>
 
-<p>所以，我们该如何使用这一大堆术语呢？下面的列表或许能帮助到你：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>var loveThing = {
+  mylove : "coding",
+  getLove :function() {
+    return this.mylove;
+  },
+  sayLove : function(thing) {
+    console.log(thing);
+  }
+}
 
-<ul>
-  <li><strong>ECMAScript</strong>：一个由 ECMA International 进行标准化，TC39 委员会进行监督的语言。通常用于指代标准本身。</li>
-  <li><strong>JavaScript</strong>：ECMAScript 标准的各种实现的最常用称呼。这个术语并不局限于某个特定版本的 ECMAScript 规范，并且可能被用于任何不同程度的任意版本的 ECMAScript 的实现。</li>
-  <li><strong>ECMAScript 5 (ES5)</strong>：ECMAScript 的第五版修订，于 2009 年完成标准化。这个规范在所有现代浏览器中都相当完全的实现了。</li>
-  <li><strong>ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015)</strong>：ECMAScript 的第六版修订，于 2015 年完成标准化。这个标准被部分实现于大部分现代浏览器。可以查阅<a href="http://kangax.github.io/compat-table/es6/">这张兼容性表</a>来查看不同浏览器和工具的实现情况。</li>
-  <li><strong>ECMAScript 2016</strong>：预计的第七版 ECMAScript 修订，计划于明年夏季发布。这份规范具体将包含哪些特性还没有最终确定</li>
-  <li><strong>ECMAScript Proposals</strong>：被考虑加入未来版本 ECMAScript 标准的特性与语法提案，他们需要经历五个阶段：Strawman（稻草人），Proposal（提议），Draft（草案），Candidate（候选）以及 Finished （完成）。</li>
-</ul>
+console.log(loveThing.getLove());//&gt;&gt;&gt; coding
+loveThing.sayLove('girl');//&gt;&gt;&gt; girl
+</code></pre>
+</div>
+<p>这种写法已经有点模块的样子了，一下就能看出这几个函数和变量之间的联系。缺点在于所有变量都必须声明为公有，所以都要加this指示作用域以引用这些变量。更危险的是，在对象之外也能轻松更改里面的参数：</p>
 
-<p>在这整个 Blog 中，我将把目前的 ECMAScript 版本称作 ES6（因为这是大部分开发者最习以为常的），把明年的规范称作 ES2016（因为，与 ES6/ES2015 不同，这个名字将在整个标准化过程中沿用）并且将那些还没有成为 ECMAScript 定稿或草案的未来语言概念称为 ECMAScript 提案或者 JavaScript 提案。我将尽我所能在任何可能引起困惑的场合沿用这篇文章。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>loveThing.mylove = "sleeping";
+console.log(loveThing.getLove());//&gt;&gt;&gt; sleeping
+</code></pre>
+</div>
 
-<h4 id="section">一些资源</h4>
+<h2 id="section-3">立即执行函数</h2>
+<p>我向来不惮以最坏的恶意揣测程序员，你永远想不到你的 partner 会不会真的在其他地方修改了你的参数，也不知道自己是否会在不经意间修改了他的。我们必须在他下手之前——让自己的模块先执行掉，不给对方可趁之机。此时使用一种叫做<strong>立即执行函数</strong>的办法，可以避免暴露私有成员。</p>
 
-<ul>
-  <li>TC39 的 <a href="https://github.com/tc39/ecma262">Github 仓库</a>上可以看到所有目前公开的提案</li>
-  <li>如果你还不熟悉 ES6，Babel 有一个<a href="https://babeljs.io/docs/learn-es2015/">很不错的特性概览</a></li>
-  <li>如果你希望深入 ES6，这里有两本很不错的书： Axel Rauschmayer 的 <a href="http://exploringjs.com/">Exploring ES6</a>和 Nicholas Zakas 的 <a href="https://leanpub.com/understandinges6">Understanding ECMAScript 6</a>。Axel 的博客 <a href="http://www.2ality.com/">2ality</a> 也是很不错的 ES6 资源</li>
-</ul>
+<div class="highlighter-rouge"><pre class="highlight"><code>var loveThing = (function(){
+  var my = {};
+  var love = "coding";
+  my.getLove = function() {
+    return love;
+  }
+  my.sayLove = function(thing) {
+    console.log(thing);
+  }
+  return my;
+})();
 
-<p><img class="shadow" width="320" src="/img/in-post/post-js-version/keep-calm-and-learn-javascript.png" />
-<small class="img-hint">来学 JavaScript 吧！</small></p>
+console.log(loveThing.getLove());//&gt;&gt;&gt; coding
+loveThing.sayLove('reading');//&gt;&gt;&gt; reading
 
-<h4 id="section-1">著作权声明</h4>
+</code></pre>
+</div>
+<p>我们试着获取里面的变量：</p>
 
-<p>本文译自 <a href="http://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/">ES5, ES6, ES2016, ES.Next: What’s going on with JavaScript versioning?</a> <br />
-译者 <a href="http://weibo.com/huxpro">黄玄</a>，首次发布于 <a href="http://huangxuan.me">Hux Blog</a>，转载请保留以上链接</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>console.log(loveThing.love);//&gt;&gt;&gt; undefined
+</code></pre>
+</div>
+<p>果然，外部根本看不见里面的零件，只能使用提供的接口。这样才能保证私有变量的安全。</p>
+
+<h2 id="section-4">放大模式</h2>
+<p>当然，一个项目要用到模块化的时候，说明这个项目足够大足够复杂，一个模块可能需要继承另一个模块，或者扩充模块，这时候需要使用<strong>放大模式</strong>：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var loveThing = (function (o){
+  o.sayOK = function () {
+    console.log('OK');
+  };
+  return o;
+})(loveThing);
+
+loveThing.sayOK();//&gt;&gt;&gt; OK!
+</code></pre>
+</div>
+
+<h2 id="section-5">宽放大模式</h2>
+<p>可是，浏览器是一个不按常理出牌的环境，你永远不知道自己引用的模块是否已经加载。万一我之前的<code class="highlighter-rouge">loveThing</code>没有被加载，上面这段代码就会报错了（找不到对象）。解决方法就是所谓<strong>宽放大模式</strong>：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var loveThing = (function (o){
+  o.sayOK = function () {};
+  return o;
+})(loveThing || {});
+</code></pre>
+</div>
+<p>与之前唯一的不同就是参数可以为空对象。</p>
+
+<p>至此，最基本的JavaScript模块化写法你已经学会了，相信你也体会到自己原来的写法有什么不足。</p>
+
+<p>受篇幅限制，本篇入门到此结束，我会在下一篇讨论流行的模块化规范。</p>
 
 
                 <hr>
@@ -239,13 +286,12 @@
                 </style>
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2015/09/22/js-version"
-                    data-title="Example Post"
-                    data-url="http://lixiang314.github.io/blog/2015/09/22/js-version/"
-                    data-images="http://lixiang314.github.io/blog/img/post-bg-js-version.jpg"
-                    data-content="JavaScript 有着很奇怪的命名史。
-
-1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名... | 你的博客 | Your Blog " >
+                    data-thread-key="/2016/03/16/js-version"
+                    data-title="快速入门JavaScript模块化"
+                    data-url="//2016/03/16/js-version/"
+                    data-images="//img/post-bg-js-module.jpg"
+                    data-content="前言
+都说“不重复造轮子”，就像iPhone——它除了打电话还可以播放音乐——但是工程师不用从零开始做一个音乐播放功能，也许只要在iPhone的系统中整合... | 李响的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -264,10 +310,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/blog/2015/07/09/js-module-7day/" data-toggle="tooltip" data-placement="top" title="Example Post using Keynote Layout">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2016/10/01/other/" data-toggle="tooltip" data-placement="top" title="使用jekyll来生成属于你自己的博客网站">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -276,9 +322,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2015/09/22/js-version"
-                        data-title="Example Post"
-                        data-url="http://lixiang314.github.io/blog/2015/09/22/js-version/" >
+                        data-thread-key="/2016/03/16/js-version"
+                        data-title="快速入门JavaScript模块化"
+                        data-url="//2016/03/16/js-version/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -302,25 +348,15 @@
                     <div class="tags">
         				
                             
-        				
-                            
-        				
-                            
-        				
-                            
-        				
-                            
-                				<a href="/blog/tags/#前端开发" title="前端开发" rel="3">
+                				<a href="/tags/#前端开发" title="前端开发" rel="2">
                                     前端开发
                                 </a>
                             
         				
                             
-                				<a href="/blog/tags/#JavaScript" title="JavaScript" rel="3">
+                				<a href="/tags/#JavaScript" title="JavaScript" rel="2">
                                     JavaScript
                                 </a>
-                            
-        				
                             
         				
         			</div>
@@ -332,8 +368,6 @@
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
                     
                         <li><a href="#">Foo</a></li>
                     
@@ -354,7 +388,7 @@
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     // dynamic User by Hux
-    var _user = '条件状语从句';
+    var _user = 'Lixzap';
 
     // duoshuo comment query.
     var duoshuoQuery = {short_name: _user };
@@ -423,7 +457,7 @@
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/条件状语从句">
+                        <a target="_blank" href="https://www.zhihu.com/people/lixzap">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -456,14 +490,9 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Your Blog 2016
+                    Copyright &copy; Lixzap's blog 2016
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
-                    </iframe>
+                    Theme by Hux
                 </p>
             </div>
         </div>
@@ -471,13 +500,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="/blog/js/jquery.min.js "></script>
+<script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/blog/js/bootstrap.min.js "></script>
+<script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/blog/js/hux-blog.min.js "></script>
+<script src="/js/hux-blog.min.js "></script>
 
 
 <!-- async load function -->
@@ -492,14 +521,14 @@
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
 -->
 <!--
     <script>
